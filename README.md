@@ -1,16 +1,13 @@
-**Important Links**
-- http://www.nltk.org/book/
-- http://www.nltk.org/howto/
-
-**KEY**
-QR - Quick Read
+#### KEY
+**QR** - Quick Read
 Shouldn't take more than 10 min. Do not spend too much time dwelling on these parts.
 
-RR - Required Read
+**RR** - Required Read
 An area that is completely required for understanding.
 
-Not mentioned - Important read
+**Not mentioned** - Important read
 
+#### Chapter Importance Extraction
 **Chapter 3**
 - The NLP Pipeline
 - 3.2 Strings: Text Processing at the Lowest Level [QR]
@@ -49,3 +46,7 @@ Not mentioned - Important read
 - 3.8 Model Building
 - 4 The Semantics of English Sentences
 - 5 Discourse Semantics
+
+#### Important Links
+- http://www.nltk.org/book/
+- http://www.nltk.org/howto/
