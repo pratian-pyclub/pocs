@@ -1,0 +1,6 @@
+Luhn - heurestic method
+Edmundson heurestic method with previous statistic research
+Latent Semantic Analysis, LSA - one of the algorithm from http://scholar.google.com/citations?user=0fTuW_YAAAAJ&hl=en I think the author is using more advanced algorithms now. Steinberger, J. a Ježek, K. Using latent semantic an and summary evaluation. In In Proceedings ISIM '04. 2004. S. 93-100.
+LexRank - Unsupervised approach inspired by algorithms PageRank and HITS
+SumBasic - Method that is often used as a baseline in the literature.
+KL-Sum - Method that greedily adds sentences to a summary so long as it decreases the KL Divergence.
