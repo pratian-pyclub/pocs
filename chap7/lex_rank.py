@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 
+# Research Paper Meta
+# LexRank: Graph-based Centrality as Salience in Text Summarization
+# by Gunes Erkan and Dragomir R. Radev
+# http://tangra.si.umich.edu/%7Eradev/lexrank/lexrank.pdf
+
 from __future__ import absolute_import
 from __future__ import division, print_function, unicode_literals
 from collections import Counter
