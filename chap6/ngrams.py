@@ -1,6 +1,12 @@
 import nltk
 from nltk.corpus import brown
 
+# Unigram taggers are based on a simple statistical algorithm: for each token,
+# assign the tag that is most likely for that particular token.
+# For example, it will assign the tag JJ to any occurrence of the word frequent,
+# since frequent is used as an adjective (e.g. a frequent word) more often than
+# it is used as a verb (e.g. I frequent this cafe).
+
 brown_tagged_sents = brown.tagged_sents(categories='news')
 brown_sents = brown.sents(categories='news')
 
