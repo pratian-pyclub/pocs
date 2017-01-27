@@ -8,7 +8,7 @@ Try to understand the overall sentiment of people during the Jallikattu protest.
 #### Interesting Points
 1) Stanford paper shows how they catapulted the data gathering process by segregating Tweets by smileys used. They based the categorization on,
 
-![emoji](emoji.png)
+![emoji](https://github.com/pratian-pyclub/nlp-pocs/blob/master/twitter/emoji.png)
 
 2) Normalizing text has a few other steps when considering Tweets,
 
