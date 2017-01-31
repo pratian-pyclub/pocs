@@ -13,7 +13,7 @@ client = Twitter::REST::Client.new do |config|
 end
 
 data = []
-client.search("#jallikattu, OR #jallikattubill, OR #ammendpca since:2017-01-07 until:2017-01-21", result_type: "recent").take(10).collect do |tweet|
+client.search("#jallikattu, OR #jallikattubill, OR #ammendpca since:2017-01-07 until: 2017-01-21", result_type: "mixed").take(10).collect do |tweet|
   data.push(
     {
       username: tweet.user.screen_name,

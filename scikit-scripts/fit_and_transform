@@ -1,0 +1,38 @@
+Fitting finds the internal parameters of a model that will be used to transform data.
+Transforming applies the parameters to data. You may fit a model to one set of data,
+and then transform it on a completely different set.
+
+For example, you fit a linear model to data to get a slope and intercept. Then
+you use those parameters to transform (i.e., map) new or existing values of x to y.
+
+fit_transform is just doing both steps to the same data.
+
+A scikit example:
+You fit data to find the principal components. Then you transform your data to
+see how it maps onto these components:
+
+```
+  from sklearn.decomposition import PCA
+
+  pca = PCA(n_components=2)
+
+  X = [[1,2],[2,4],[1,3]]
+  pca.fit(X)
+
+  # This is the model to map data
+  pca.components_
+  >>> array([[ 0.47185791,  0.88167459],
+         [-0.88167459,  0.47185791]], dtype=float32)
+
+  # Now we actually map the data
+  pca.transform(X)
+  >>> array([[-1.03896057, -0.17796634],
+         [ 1.19624651, -0.11592512],
+         [-0.15728599,  0.29389156]])
+
+  # Or we can do both "at once"
+  pca.fit_transform(X)
+  >>> array([[-1.03896058, -0.1779664 ],
+         [ 1.19624662, -0.11592512],
+         [-0.15728603,  0.29389152]], dtype=float32)
+```
