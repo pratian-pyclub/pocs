@@ -1,7 +1,7 @@
 ## Jallikattu Twitter Analysis
 Try to understand the overall sentiment of people during the Jallikattu protest.
 
-### Inspiration
+### Inspiration!
 - [Analyzing Twitter Sentiment of the 2016 Presidential Candidates Paper by Stanford students](http://web.stanford.edu/~jesszhao/files/twitterSentiment.pdf)
 - [Watching the US Federal Election through Twitter](https://goodfoodgoodcode.com/2016/11/14/watching-the-us-federal-election-through-twitter/)
 
