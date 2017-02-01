@@ -51,17 +51,10 @@ class NBClassifier():
 
     def top_words(self, n=N_FEATURES):
         freq_words = nltk.FreqDist(word for word in self.all_words)
-        # self.word_features = list(self.all_words)[:n]
         freq_words = list(self.all_words)[:n]
         self.word_features = dict([(word, True) for word in freq_words])
 
     def document_features(self, sentence):
-        # features = {}
-        # words = nltk.word_tokenize(sentence)
-        # for word in self.word_features:
-        #     features[word] = (word in words)
-        #
-        # return features
         features = {}
 
         sentence_words = nltk.word_tokenize(sentence)
