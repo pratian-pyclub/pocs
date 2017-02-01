@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import yaml
 import nltk
+# http://www.nltk.org/howto/collocations.html
+# http://www.nltk.org/_modules/nltk/collocations.html
 from nltk.collocations import *
 from nltk.metrics import BigramAssocMeasures
 
@@ -81,11 +83,11 @@ class NBClassifier():
 
         self.classifier = nltk.NaiveBayesClassifier.train(train_set)
 
-    def save(self):
-        # save classifier
-
-    def load(self):
-        # load classifier
+    # def save(self):
+    #     # save classifier
+    #
+    # def load(self):
+    #     # load classifier
 
     def parse(self, sentence):
         return self.classifier.classify(self.document_features(sentence))
