@@ -106,7 +106,4 @@ class NBClassifier():
 
         return nltk.classify.accuracy(self.classifier, train_set)
 
-n = NBClassifier()
-print n.accuracy()
-
 
