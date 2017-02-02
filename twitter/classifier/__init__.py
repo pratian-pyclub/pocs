@@ -6,6 +6,10 @@ import nltk
 from nltk.collocations import *
 from nltk.metrics import BigramAssocMeasures
 from sklearn.externals import joblib
+from nltk.corpus import stopwords
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+
 
 from paths import POSPATH, NEGPATH, N_FEATURES, CLASSIFIER_FILE
 
@@ -28,6 +32,7 @@ class NBClassifier():
         self.classifier = None
         self.get_all_words()
         self.top_words()
+        self.word_cloud()
         self.top_bigrams()
 
         if load:
@@ -53,10 +58,30 @@ class NBClassifier():
 
         self.bigram_features = dict([(bigram, True) for bigram in freq_bigrams])
 
+    def accepted_word(self,word):
+        accept = True
+        if word in stopwords.words('english'):
+            accept = False
+        elif len(word) < 4 :
+            accept = False
+        elif isinstance(word, unicode):
+            accept = False
+        return accept 
+
     def top_words(self, n=N_FEATURES):
         freq_words = nltk.FreqDist(word for word in self.all_words)
+        self.freq_words = nltk.FreqDist(word for word in self.all_words if self.accepted_word(word))
+        print self.freq_words.most_common(100)
+        # self.word_features = list(self.all_words)[:n]
         freq_words = list(self.all_words)[:n]
         self.word_features = dict([(word, True) for word in freq_words])
+
+    def word_cloud(self):
+        wordcloud = WordCloud(width=1000, height=1000).generate_from_frequencies(self.freq_words.most_common(50))
+        plt.imshow(wordcloud)
+        plt.axis('off')
+        plt.show()
+        
 
     def document_features(self, sentence):
         features = {}
