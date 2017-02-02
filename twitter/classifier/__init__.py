@@ -5,8 +5,9 @@ import nltk
 # http://www.nltk.org/_modules/nltk/collocations.html
 from nltk.collocations import *
 from nltk.metrics import BigramAssocMeasures
+from sklearn.externals import joblib
 
-from paths import POSPATH, NEGPATH, N_FEATURES
+from paths import POSPATH, NEGPATH, N_FEATURES, apipath
 
 def load_yaml_files():
     posyml = []
@@ -20,16 +21,19 @@ def load_yaml_files():
     return posyml, negyml
 
 POSYML, NEGYML = load_yaml_files()
+CLASSIFIER_FILE = apipath +'/classifier'
 
 class NBClassifier():
     def __init__(self):
         self.bigram_measures = nltk.collocations.BigramAssocMeasures()
-
+        self.classifier = ''
         self.get_all_words()
         self.top_words()
         self.top_bigrams()
-
-        self.train()
+        self.load()
+        if self.classifier is '' :
+            self.train()
+        self.save()
 
     def get_all_words(self):
         self.all_words = []
@@ -76,11 +80,16 @@ class NBClassifier():
 
         self.classifier = nltk.NaiveBayesClassifier.train(train_set)
 
-    # def save(self):
-    #     # save classifier
-    #
-    # def load(self):
-    #     # load classifier
+    def save(self):
+        # save classifier
+        with open(CLASSIFIER_FILE,'wb') as file:
+            joblib.dump(self.classifier, file)
+
+    def load(self):
+        # load classifier
+        with open(CLASSIFIER_FILE, 'rb') as file:
+            if file.read(1) != '':
+                self.classifier = joblib.load(file)
 
     def parse(self, sentence):
         return self.classifier.classify(self.document_features(sentence))
@@ -90,3 +99,5 @@ class NBClassifier():
         train_set += [(self.document_features(neg['text']), 'neg') for neg in NEGYML]
 
         return nltk.classify.accuracy(self.classifier, train_set)
+
+
