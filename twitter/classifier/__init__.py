@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 import yaml
 import nltk
-from sklearn.externals import joblib
+# http://www.nltk.org/howto/collocations.html
+# http://www.nltk.org/_modules/nltk/collocations.html
 from nltk.collocations import *
 from nltk.metrics import BigramAssocMeasures
+from sklearn.externals import joblib
 
 from paths import POSPATH, NEGPATH, N_FEATURES, apipath
 
@@ -53,17 +55,10 @@ class NBClassifier():
 
     def top_words(self, n=N_FEATURES):
         freq_words = nltk.FreqDist(word for word in self.all_words)
-        # self.word_features = list(self.all_words)[:n]
         freq_words = list(self.all_words)[:n]
         self.word_features = dict([(word, True) for word in freq_words])
 
     def document_features(self, sentence):
-        # features = {}
-        # words = nltk.word_tokenize(sentence)
-        # for word in self.word_features:
-        #     features[word] = (word in words)
-        #
-        # return features
         features = {}
 
         sentence_words = nltk.word_tokenize(sentence)
@@ -95,7 +90,6 @@ class NBClassifier():
         with open(CLASSIFIER_FILE, 'rb') as file:
             if file.read(1) != '':
                 self.classifier = joblib.load(file)
-
 
     def parse(self, sentence):
         return self.classifier.classify(self.document_features(sentence))
