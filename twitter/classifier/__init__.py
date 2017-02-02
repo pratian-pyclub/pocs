@@ -1,13 +1,23 @@
 # -*- coding: utf-8 -*-
 import yaml
+import matplotlib.pyplot as plt
 import nltk
 # http://www.nltk.org/howto/collocations.html
 # http://www.nltk.org/_modules/nltk/collocations.html
 from nltk.collocations import *
 from nltk.metrics import BigramAssocMeasures
 from sklearn.externals import joblib
+from nltk.corpus import stopwords
+from wordcloud import WordCloud
+from scipy.misc import imread
+from sklearn.feature_extraction import DictVectorizer
+from sklearn.pipeline import Pipeline
+from sklearn.naive_bayes import GaussianNB
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.svm import SVC
 
-from paths import POSPATH, NEGPATH, N_FEATURES, CLASSIFIER_FILE
+
+from paths import POSPATH, NEGPATH, N_FEATURES, CLASSIFIER_FILE, BULLIMG
 
 def load_yaml_files():
     posyml = []
@@ -28,6 +38,7 @@ class NBClassifier():
         self.classifier = None
         self.get_all_words()
         self.top_words()
+        self.word_cloud()
         self.top_bigrams()
 
         if load:
@@ -53,11 +64,30 @@ class NBClassifier():
 
         self.bigram_features = dict([(bigram, True) for bigram in freq_bigrams])
 
+    def accepted_word(self,word):
+        accept = True
+        if word in stopwords.words('english'):
+            accept = False
+        elif len(word) < 4 :
+            accept = False
+        elif isinstance(word, unicode):
+            accept = False
+        return accept 
+
     def top_words(self, n=N_FEATURES):
         freq_words = nltk.FreqDist(word for word in self.all_words)
+        # self.word_features = list(self.all_words)[:n]
         freq_words = list(self.all_words)[:n]
         self.word_features = dict([(word, True) for word in freq_words])
 
+    def word_cloud(self):
+        freq_words = nltk.FreqDist(word for word in self.all_words if self.accepted_word(word))
+        bull_image = imread(BULLIMG)
+        wordcloud = WordCloud(background_color='#040303', width=1000, height=1000, mask=bull_image).generate_from_frequencies(freq_words.most_common(220))
+        plt.imshow(wordcloud)
+        plt.axis('off')
+        plt.show()
+        
     def document_features(self, sentence):
         features = {}
 
@@ -75,10 +105,27 @@ class NBClassifier():
         return features
 
     def train(self):
-        train_set = [(self.document_features(pos['text']), 'pos') for pos in POSYML]
-        train_set += [(self.document_features(neg['text']), 'neg') for neg in NEGYML]
+        X,Y = [],[]
 
-        self.classifier = nltk.NaiveBayesClassifier.train(train_set)
+        for i in range(len(POSYML)):
+            X.append(self.document_features(POSYML[i]['text']))
+            Y.append(POSYML[i]['sent'])
+
+        for i in range(len(NEGYML)):
+            X.append(self.document_features(NEGYML[i]['text']))
+            Y.append(NEGYML[i]['sent'])
+
+        # train_set = [(self.document_features(pos['text']), 'pos') for pos in POSYML]
+        # train_set += [(self.document_features(neg['text']), 'neg') for neg in NEGYML]
+
+        # self.classifier = nltk.NaiveBayesClassifier.train(train_set)
+        self.classifier = Pipeline([
+                ('vectorizer', DictVectorizer(sparse=False)),
+                ('classifier', SVC())
+            ])
+
+        self.classifier.fit(X[1000:2000],Y[1000:2000])
+        print self.classifier.score(X[:1000],Y[:1000])
 
     def save(self):
         # save classifier
@@ -99,3 +146,5 @@ class NBClassifier():
         train_set += [(self.document_features(neg['text']), 'neg') for neg in NEGYML]
 
         return nltk.classify.accuracy(self.classifier, train_set)
+
+n = NBClassifier()

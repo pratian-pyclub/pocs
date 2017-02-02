@@ -64,6 +64,7 @@ def to_dataset(tagged_sentences):
 
 feature,predict = to_dataset(training_sentences[:])
 
+
 classfier = Pipeline([
     ('vectorizer', DictVectorizer(sparse=False)),
     ('classifier', DecisionTreeClassifier(criterion='entropy'))
