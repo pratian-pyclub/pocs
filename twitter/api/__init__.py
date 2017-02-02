@@ -10,14 +10,17 @@ data = []
 tweetCriteria = got.manager.TweetCriteria().setQuerySearch('#banjallikattu').setSince("2017-01-07").setUntil("2017-01-21").setMaxTweets(1500)
 for tweet in got.manager.TweetManager.getTweets(tweetCriteria):
     txt = normalizeText(tweet.text, hashtags=tweet.hashtags)
+    date = str(tweet.date)
+    date = date.split(" ")[0]
 
+    print date
     data.append({
         'id': tweet.id,
         'text_full': tweet.text.encode('utf-8'),
         'text': txt,
         'username': tweet.username,
         'permalink': tweet.permalink,
-        'date': tweet.date,
+        'date': date,
         'retweets': tweet.retweets,
         'favorites': tweet.favorites,
         'hashtags': tweet.hashtags,
