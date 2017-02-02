@@ -10,6 +10,11 @@ from sklearn.externals import joblib
 from nltk.corpus import stopwords
 from wordcloud import WordCloud
 from scipy.misc import imread
+from sklearn.feature_extraction import DictVectorizer
+from sklearn.pipeline import Pipeline
+from sklearn.naive_bayes import GaussianNB
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.svm import SVC
 
 
 from paths import POSPATH, NEGPATH, N_FEATURES, CLASSIFIER_FILE, BULLIMG
@@ -78,7 +83,7 @@ class NBClassifier():
     def word_cloud(self):
         freq_words = nltk.FreqDist(word for word in self.all_words if self.accepted_word(word))
         bull_image = imread(BULLIMG)
-        wordcloud = WordCloud(background_color='#040303', width=1000, height=1000, mask=bull_image).generate_from_frequencies(freq_words.most_common(200))
+        wordcloud = WordCloud(background_color='#040303', width=1000, height=1000, mask=bull_image).generate_from_frequencies(freq_words.most_common(220))
         plt.imshow(wordcloud)
         plt.axis('off')
         plt.show()
@@ -100,10 +105,27 @@ class NBClassifier():
         return features
 
     def train(self):
-        train_set = [(self.document_features(pos['text']), 'pos') for pos in POSYML]
-        train_set += [(self.document_features(neg['text']), 'neg') for neg in NEGYML]
+        X,Y = [],[]
 
-        self.classifier = nltk.NaiveBayesClassifier.train(train_set)
+        for i in range(len(POSYML)):
+            X.append(self.document_features(POSYML[i]['text']))
+            Y.append(POSYML[i]['sent'])
+
+        for i in range(len(NEGYML)):
+            X.append(self.document_features(NEGYML[i]['text']))
+            Y.append(NEGYML[i]['sent'])
+
+        # train_set = [(self.document_features(pos['text']), 'pos') for pos in POSYML]
+        # train_set += [(self.document_features(neg['text']), 'neg') for neg in NEGYML]
+
+        # self.classifier = nltk.NaiveBayesClassifier.train(train_set)
+        self.classifier = Pipeline([
+                ('vectorizer', DictVectorizer(sparse=False)),
+                ('classifier', SVC())
+            ])
+
+        self.classifier.fit(X[1000:2000],Y[1000:2000])
+        print self.classifier.score(X[:1000],Y[:1000])
 
     def save(self):
         # save classifier
