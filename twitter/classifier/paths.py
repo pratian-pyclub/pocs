@@ -3,6 +3,8 @@ import os
 PWDPATH = os.path.abspath(__file__)
 apipath = os.path.dirname(PWDPATH)
 
+CLASSIFIER_FILE = apipath +'/classifier'
+
 POSPATH = os.path.dirname(apipath) + '/data/pos.yml'
 NEGPATH = os.path.dirname(apipath) + '/data/neg.yml'
 N_FEATURES = 200

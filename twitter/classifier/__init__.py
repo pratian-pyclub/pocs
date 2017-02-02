@@ -7,7 +7,7 @@ from nltk.collocations import *
 from nltk.metrics import BigramAssocMeasures
 from sklearn.externals import joblib
 
-from paths import POSPATH, NEGPATH, N_FEATURES, apipath
+from paths import POSPATH, NEGPATH, N_FEATURES, CLASSIFIER_FILE
 
 def load_yaml_files():
     posyml = []
@@ -21,19 +21,19 @@ def load_yaml_files():
     return posyml, negyml
 
 POSYML, NEGYML = load_yaml_files()
-CLASSIFIER_FILE = apipath +'/classifier'
 
 class NBClassifier():
-    def __init__(self):
+    def __init__(self, load=False):
         self.bigram_measures = nltk.collocations.BigramAssocMeasures()
-        self.classifier = ''
+        self.classifier = None
         self.get_all_words()
         self.top_words()
         self.top_bigrams()
-        self.load()
-        if self.classifier is '' :
+
+        if load:
+            self.load()
+        else:
             self.train()
-        self.save()
 
     def get_all_words(self):
         self.all_words = []
@@ -91,7 +91,7 @@ class NBClassifier():
             if file.read(1) != '':
                 self.classifier = joblib.load(file)
 
-    def parse(self, sentence):
+    def classify(self, sentence):
         return self.classifier.classify(self.document_features(sentence))
 
     def accuracy(self):
@@ -99,5 +99,3 @@ class NBClassifier():
         train_set += [(self.document_features(neg['text']), 'neg') for neg in NEGYML]
 
         return nltk.classify.accuracy(self.classifier, train_set)
-
-
