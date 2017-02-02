@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import yaml
+import matplotlib.pyplot as plt
 import nltk
 # http://www.nltk.org/howto/collocations.html
 # http://www.nltk.org/_modules/nltk/collocations.html
@@ -7,11 +8,11 @@ from nltk.collocations import *
 from nltk.metrics import BigramAssocMeasures
 from sklearn.externals import joblib
 from nltk.corpus import stopwords
-import matplotlib.pyplot as plt
 from wordcloud import WordCloud
+from scipy.misc import imread
 
 
-from paths import POSPATH, NEGPATH, N_FEATURES, CLASSIFIER_FILE
+from paths import POSPATH, NEGPATH, N_FEATURES, CLASSIFIER_FILE, BULLIMG
 
 def load_yaml_files():
     posyml = []
@@ -70,19 +71,18 @@ class NBClassifier():
 
     def top_words(self, n=N_FEATURES):
         freq_words = nltk.FreqDist(word for word in self.all_words)
-        self.freq_words = nltk.FreqDist(word for word in self.all_words if self.accepted_word(word))
-        print self.freq_words.most_common(100)
         # self.word_features = list(self.all_words)[:n]
         freq_words = list(self.all_words)[:n]
         self.word_features = dict([(word, True) for word in freq_words])
 
     def word_cloud(self):
-        wordcloud = WordCloud(width=1000, height=1000).generate_from_frequencies(self.freq_words.most_common(50))
+        freq_words = nltk.FreqDist(word for word in self.all_words if self.accepted_word(word))
+        bull_image = imread(BULLIMG)
+        wordcloud = WordCloud(background_color='#040303', width=1000, height=1000, mask=bull_image).generate_from_frequencies(freq_words.most_common(200))
         plt.imshow(wordcloud)
         plt.axis('off')
         plt.show()
         
-
     def document_features(self, sentence):
         features = {}
 
@@ -124,3 +124,5 @@ class NBClassifier():
         train_set += [(self.document_features(neg['text']), 'neg') for neg in NEGYML]
 
         return nltk.classify.accuracy(self.classifier, train_set)
+
+n = NBClassifier()

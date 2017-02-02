@@ -7,6 +7,7 @@ CLASSIFIER_FILE = apipath +'/classifier'
 
 POSPATH = os.path.dirname(apipath) + '/data/pos.yml'
 NEGPATH = os.path.dirname(apipath) + '/data/neg.yml'
+BULLIMG = os.path.dirname(apipath) + '/data/bull.png'
 N_FEATURES = 200
 
 # POSPATH = os.path.dirname(apipath) + '/data/pos_small.yml'
