@@ -17,7 +17,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.svm import SVC
 
 
-from paths import POSPATH, NEGPATH, N_FEATURES, CLASSIFIER_FILE, BULLIMG
+from paths import *
 
 def load_yaml_files():
     posyml = []
@@ -39,7 +39,7 @@ class NBClassifier():
         self.get_all_words()
         self.top_words()
         self.top_bigrams()
-        self.word_cloud()
+        # self.word_cloud()
 
         if load:
             self.load()
@@ -54,39 +54,40 @@ class NBClassifier():
         for neg in NEGYML:
             self.all_words += [word for word in nltk.word_tokenize(neg['text'])]
 
+    def accepted_word(self, word):
+        if len(word) < ACCEPTED_WORD_LENGTH:
+            return False
+        elif isinstance(word, unicode):
+            return False
+        elif word in stopwords.words('english'):
+            return False
+        else:
+            return True
+
+    def top_words(self, n=N_FEATURES):
+        freq_words = nltk.FreqDist(word for word in self.all_words if self.accepted_word(word))
+        self.word_features = dict([(word, True) for word in freq_words])
+
     def top_bigrams(self, n=N_FEATURES):
         finder = BigramCollocationFinder.from_words(self.all_words)
+
+        finder.apply_word_filter(lambda word: not self.accepted_word(word))
+        # ignoring all bigrams which occur less than n times
         finder.apply_freq_filter(3)
 
-        # ignoring all bigrams which occur less than n times
         # freq_bigrams = finder.nbest(self.bigram_measures.pmi, n)
         freq_bigrams = finder.nbest(self.bigram_measures.chi_sq, n)
 
         self.bigram_features = dict([(bigram, True) for bigram in freq_bigrams])
 
-    def top_words(self, n=N_FEATURES):
-        freq_words = nltk.FreqDist(word for word in self.all_words)
-        # self.word_features = list(self.all_words)[:n]
-        freq_words = list(self.all_words)[:n]
-        self.word_features = dict([(word, True) for word in freq_words])
-
-    def accepted_word(self,word):
-        accept = True
-        if word in stopwords.words('english'):
-            accept = False
-        elif len(word) < 4 :
-            accept = False
-        elif isinstance(word, unicode):
-            accept = False
-        return accept
-
     def word_cloud(self):
         freq_words = nltk.FreqDist(word for word in self.all_words if self.accepted_word(word))
-        bull_image = imread(BULLIMG)
-        wordcloud = WordCloud(background_color='#040303', width=1000, height=1000, mask=bull_image).generate_from_frequencies(freq_words.most_common(220))
-        plt.imshow(wordcloud)
-        plt.axis('off')
-        plt.show()
+        return freq_words
+        # bull_image = imread(BULLIMG)
+        # wordcloud = WordCloud(background_color='#040303', width=1000, height=1000, mask=bull_image).generate_from_frequencies(freq_words.most_common(220))
+        # plt.imshow(wordcloud)
+        # plt.axis('off')
+        # plt.show()
 
     def document_features(self, sentence):
         features = {}
@@ -150,5 +151,3 @@ class NBClassifier():
         train_set += [(self.document_features(neg['text']), 'neg') for neg in NEGYML]
 
         return nltk.classify.accuracy(self.classifier, train_set)
-
-n = NBClassifier()
