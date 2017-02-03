@@ -22,7 +22,6 @@ for username in profiles:
             tweet.date.strftime('%d/%m/%Y')
         ])
 
-
 colors = ['#FF3352','#FF6B33','#C70039','#261DDA']
 results = {}
 for k, v in data:
@@ -36,7 +35,6 @@ for i in range(7,22):
         dates.append('0'+str(i)+'/01/2017')
     else:
         dates.append(str(i)+'/01/2017')
-
 
 for key in results:
     x,y,values = [], [], []
@@ -58,9 +56,3 @@ for key in results:
     plt.xticks(Y,dates,rotation=45)
 
     plt.show()
-        
-
-
-
-
-
