@@ -17,9 +17,9 @@ data ={
 				'19/01/2017': {'neg': 198, 'pos': 92},
 				'20/01/2017': {'neg': 378, 'pos': 1196},
 				'21/01/2017': {'neg': 75, 'pos': 227}
-			}	
+			}
 
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
 xdate = []
 neg = []
 pos = []

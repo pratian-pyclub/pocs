@@ -38,8 +38,8 @@ class NBClassifier():
         self.classifier = None
         self.get_all_words()
         self.top_words()
-        self.word_cloud()
         self.top_bigrams()
+        self.word_cloud()
 
         if load:
             self.load()
@@ -64,6 +64,12 @@ class NBClassifier():
 
         self.bigram_features = dict([(bigram, True) for bigram in freq_bigrams])
 
+    def top_words(self, n=N_FEATURES):
+        freq_words = nltk.FreqDist(word for word in self.all_words)
+        # self.word_features = list(self.all_words)[:n]
+        freq_words = list(self.all_words)[:n]
+        self.word_features = dict([(word, True) for word in freq_words])
+
     def accepted_word(self,word):
         accept = True
         if word in stopwords.words('english'):
@@ -72,13 +78,7 @@ class NBClassifier():
             accept = False
         elif isinstance(word, unicode):
             accept = False
-        return accept 
-
-    def top_words(self, n=N_FEATURES):
-        freq_words = nltk.FreqDist(word for word in self.all_words)
-        # self.word_features = list(self.all_words)[:n]
-        freq_words = list(self.all_words)[:n]
-        self.word_features = dict([(word, True) for word in freq_words])
+        return accept
 
     def word_cloud(self):
         freq_words = nltk.FreqDist(word for word in self.all_words if self.accepted_word(word))
@@ -87,7 +87,7 @@ class NBClassifier():
         plt.imshow(wordcloud)
         plt.axis('off')
         plt.show()
-        
+
     def document_features(self, sentence):
         features = {}
 
@@ -105,27 +105,31 @@ class NBClassifier():
         return features
 
     def train(self):
-        X,Y = [],[]
+        # NaiveBayesClassifier
+        train_set = [(self.document_features(pos['text']), 'pos') for pos in POSYML]
+        train_set += [(self.document_features(neg['text']), 'neg') for neg in NEGYML]
 
-        for i in range(len(POSYML)):
-            X.append(self.document_features(POSYML[i]['text']))
-            Y.append(POSYML[i]['sent'])
+        self.classifier = nltk.NaiveBayesClassifier.train(train_set)
 
-        for i in range(len(NEGYML)):
-            X.append(self.document_features(NEGYML[i]['text']))
-            Y.append(NEGYML[i]['sent'])
+        # SVM / DT
+        # X,Y = [],[]
+        #
+        # for i in range(len(POSYML)):
+        #     X.append(self.document_features(POSYML[i]['text']))
+        #     Y.append(POSYML[i]['sent'])
+        #
+        # for i in range(len(NEGYML)):
+        #     X.append(self.document_features(NEGYML[i]['text']))
+        #     Y.append(NEGYML[i]['sent'])
 
-        # train_set = [(self.document_features(pos['text']), 'pos') for pos in POSYML]
-        # train_set += [(self.document_features(neg['text']), 'neg') for neg in NEGYML]
-
-        # self.classifier = nltk.NaiveBayesClassifier.train(train_set)
-        self.classifier = Pipeline([
-                ('vectorizer', DictVectorizer(sparse=False)),
-                ('classifier', SVC())
-            ])
-
-        self.classifier.fit(X[1000:2000],Y[1000:2000])
-        print self.classifier.score(X[:1000],Y[:1000])
+        # self.classifier = Pipeline([
+        #         ('vectorizer', DictVectorizer(sparse=False)),
+        #         ('classifier', SVC())
+        #     ])
+        #
+        # self.classifier.fit(X[1000:2000],Y[1000:2000])
+        # accuracy
+        # print self.classifier.score(X[:1000],Y[:1000])
 
     def save(self):
         # save classifier
