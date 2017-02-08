@@ -50,11 +50,10 @@ def plot(start, weighted_path, g, routes):
 
     for edge in g.edges[start]:
         if edge not in weighted_path['path']:
-            if g.distances[(start, edge)]:
-                newpath = weighted_path['path'] + [edge]
-                newweight = weighted_path['weight'] + g.distances[(start, edge)]
+            newpath = weighted_path['path'] + [edge]
+            newweight = weighted_path['weight'] + g.distances[(start, edge)]
 
-                plot(edge, {'path': newpath, 'weight': newweight}, g, routes)
+            plot(edge, {'path': newpath, 'weight': newweight}, g, routes)
 
     return routes
 
