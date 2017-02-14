@@ -1,0 +1,5 @@
+https://intoverflow.wordpress.com/2008/05/27/what-is-a-hidden-markov-model/
+https://www.quora.com/What-are-some-good-resources-for-learning-about-Hidden-Markov-Models
+https://github.com/ananthpn/pyhmm/blob/master/myhmm.py
+https://github.com/codebox/markov-text
+https://github.com/chaithuzz2/Parts-Of-Speech-tagging/blob/master/tagger.py
