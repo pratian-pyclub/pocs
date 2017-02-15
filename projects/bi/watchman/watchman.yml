@@ -1,0 +1,11 @@
+source:
+  - /Users/swaathi/watch
+regexes:
+  - ""
+endpoints:
+  file_create: "http://localhost/api/v2/files/create"
+  folder_create: "http://localhost/api/v2/folders/create"
+  file_move: "http://localhost/api/v2/files/move"
+  folder_move: "http://localhost/api/v2/folders/move"
+  file_destroy: "http://localhost/api/v2/files/destroy"
+  folder_destroy: "http://localhost/api/v2/folders/destroy"

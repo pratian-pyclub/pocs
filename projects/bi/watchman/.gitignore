@@ -1,0 +1,9 @@
+*.DS_STORE
+*.pid
+*.pyc
+*.log
+dump.rdb
+venv
+watchman.egg-info
+build
+dist

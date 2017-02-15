@@ -25,9 +25,9 @@ The skills learned will be,
 
 ### Labs:
 1. Conditional Frequency Distributions
-    - Conditions and Events
-    - Counting Words by Genre
+    - Frequency Distribution and Dispersion Plots
     - Plotting and Tabulating Distributions
+    - Counting Words by Genre
 2. Convert English Text to Pig Latin
     - Definition of Pig Latin Each word of the text is converted as follows: move any consonant (or consonant   cluster) that appears at the start of the word to the end, then append ay, e.g. string → ingstray, idle → idleay. http://en.wikipedia.org/wiki/Pig_Latin
     - Write a function to convert a word to Pig Latin.
@@ -77,12 +77,13 @@ Skills learnt will be,
 - Exploring a Maze
 - Implementing a binary search tree that accepts any input type
 - The Knight’s Tour Problem
+- Dijkstra's Problem
 
 ### Projects:
 1. Create rate-limiting tool with Python and Redis
   - Use the Python Redis package, https://pypi.python.org/pypi/redis.
   - Redis will be used to store all the values to be processed.
-  - A background job  will read the data from Redis and process them at regular intervals.
+  - A background job will read the data from Redis and process them at regular intervals.
   - Background jobs will be managed using the RQ Python package, http://python-rq.org/
   - Create a CLI function that would start these background processes
 
