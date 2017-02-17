@@ -21,7 +21,6 @@ def build_lengths_matrix(str1, str2):
                 matrix[i+1][j+1] = max(matrix[i+1][j], matrix[i][j+1])
     return matrix
 
-
 def read_from_matrix(matrix, str1, str2):
     result = ""
     i, j = len(str1), len(str2)
@@ -36,9 +35,13 @@ def read_from_matrix(matrix, str1, str2):
             j -= 1
     return result[::-1]
 
-
 def lcs(str1, str2):
     lengths = build_lengths_matrix(str1, str2)
     return read_from_matrix(lengths, str1, str2)
 
-print lcs("python", "typhon")
+print lcs("abcdefg", "bcdgk")
+# bcdg
+print lcs("XMJYAUZ", "MZJAWXU")
+# MJAU
+print lcs("gac", "agcat")
+# ga
