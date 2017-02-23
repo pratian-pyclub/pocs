@@ -54,6 +54,11 @@ def conv2d(x, W, b, strides=1):
 # 5 6 7 8 ====> 6 8     {max(5,6,7,8) => 8}
 # 3 2 1 0 ====> 3 4     {max(3,2,1,0) => 3}
 # 1 2 3 4               {max(1,2,3,4) => 4}
+
+# Typical values are 2x2 or no max-pooling. Very large input images may warrant
+# 4x4 pooling in the lower-layers. Keep in mind however, that this will reduce
+# the dimension of the signal by a factor of 16, and may result in throwing away
+# too much information.
 def maxpool2d(x, k=2):
     return tf.nn.max_pool(x, ksize=[1, k, k, 1], strides=[1, k, k, 1],
                           padding = 'SAME')
