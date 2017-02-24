@@ -15,11 +15,11 @@ from sklearn.metrics import confusion_matrix
 filepath = os.path.abspath(__file__)
 PWDPATH = os.path.dirname(filepath)
 
+# df = pd.read_csv('/Users/swaathi/Skcript/Pratian/pocs/scikit-scripts/HR_comma_sep.csv')
 df = pd.read_csv(PWDPATH + '/HR_comma_sep.csv')
 
 # dependent salary values
 df['salary'].replace({'low':1,'medium':5,'high':10}, inplace=True)
-salary = df['salary']
 
 # independent sales values
 dummies = pd.get_dummies(df['sales'], prefix='sales')
