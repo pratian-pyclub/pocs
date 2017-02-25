@@ -62,7 +62,7 @@ def to_dataset(tagged_sentences):
 	return x,y
 
 
-feature,predict = to_dataset(training_sentences[:])
+feature, predict = to_dataset(training_sentences[:])
 
 
 classfier = Pipeline([
