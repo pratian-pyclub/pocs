@@ -15,7 +15,6 @@ The system does not do chain recommendations. Meaning all similar movies are fou
 4. numpy : `pip install numpy`
 5. scikit-learn : `pip install scikit-learn`
 
-
 ## Installation
 1. Clone this repo
 2. Cd into "movrec"
