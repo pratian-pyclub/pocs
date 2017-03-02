@@ -1,0 +1,65 @@
+---
+- id: 1
+  HICN: K765775483
+  MemberID: 1888
+  ClaimID: 12850854324
+  ICD: 'V16'
+  ICD_Desc: 'Family history of malignant neoplasm of gastrointestinal tract'
+- id: 2
+  HICN: K765775483
+  MemberID: 1889
+  ClaimID: 12850854324
+  ICD: 'V16'
+  ICD_Desc: 'Family history of malignant neoplasm of gastrointestinal tract'
+- id: 3
+  HICN: K765775483
+  MemberID: 1890
+  ClaimID: 53950854324
+  ICD: 'V16'
+  ICD_Desc: 'Family history of malignant neoplasm of gastrointestinal tract'
+- id: 4
+  HICN: K765775483
+  MemberID: 1891
+  ClaimID: 53950854324
+  ICD: 'V16'
+  ICD_Desc: 'Family history of malignant neoplasm of gastrointestinal tract'
+- id: 5
+  HICN: K765775483
+  MemberID: 1887
+  ClaimID: 12850854324
+  ICD: '53190'
+  ICD_Desc: 'Gastric ulcer, unspecified as acute or chronic, without mention of hemorrhage
+    or perforation, without mention of obstruction'
+- id: 6
+  HICN: K765775483
+  MemberID: 852
+  ClaimID: 12850854324
+  ICD: '53190'
+  ICD_Desc: 'Gastric ulcer, unspecified as acute or chronic, without mention of hemorrhage
+    or perforation, without mention of obstruction'
+- id: 7
+  HICN: K765775483
+  MemberID: 4914
+  ClaimID: 69643239995
+  ICD: '35800'
+  ICD_Desc: 'Myasthenia gravis without (acute) exacerbation'
+- id: 8
+  HICN: K765775483
+  MemberID: 4728
+  ClaimID: 53950854324
+  ICD: '53190'
+  ICD_Desc: 'Gastric ulcer, unspecified as acute or chronic, without mention of hemorrhage
+    or perforation, without mention of obstruction'
+- id: 9
+  HICN: K765775483
+  MemberID: 4728
+  ClaimID: 53950854324
+  ICD: '53190'
+  ICD_Desc: 'Gastric ulcer, unspecified as acute or chronic, without mention of hemorrhage
+    or perforation, without mention of obstruction'
+- id: 10
+  HICN: K765775483
+  MemberID: 256
+  ClaimID: 76704441825
+  ICD: '5990'
+  ICD_Desc: 'Urinary tract infection, site not specified'

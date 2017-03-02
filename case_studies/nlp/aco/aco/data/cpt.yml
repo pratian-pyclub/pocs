@@ -1,0 +1,109 @@
+---
+- id: 1
+  HICN: K765775483
+  MemberID: 1888
+  ClaimID: 87558871524
+  CPT: '88305'
+  CPT_Desc: 'Level IV - Surgical pathology, gross and microscopic examination Abortion
+    - spontaneous/missed Artery, biopsy Bone marrow, biopsy Bone exostosis Brain/meninges,
+    other than for tumor resection Breast, biopsy, not requiring microscopic evaluation
+    of surgical margins Breast, reduction mammoplasty Bronchus, biopsy Cell block,
+    any source Cervix, biopsy Colon, biopsy Duodenum, biopsy Endocervix, curettings/biopsy
+    Endometrium, curettings/biopsy Esophagus, biopsy Extremity, amputation, traumatic
+    Fallopian tube, biopsy Fallopian tube, ectopic pregnancy Femoral head, fracture
+    Fingers/toes, amputation, non-traumatic Gingiva/oral mucosa, biopsy Heart valve
+    Joint, resection Kidney, biopsy Larynx, biopsy Leiomyoma(s), uterine myomectomy
+    - without uterus Lip, biopsy/wedge resection Lung, transbronchial biopsy Lymph
+    node, biopsy Muscle, biopsy Nasal mucosa, biopsy Nasopharynx/oropharynx, biopsy
+    Nerve, biopsy Odontogenic/dental cyst Omentum, biopsy Ovary with or without tube,
+    non-neoplastic Ovary, biopsy/wedge resection Parathyroid gland Peritoneum, biopsy
+    Pituitary tumor Placenta, other than third trimester Pleura/pericardium - biopsy/tissue
+    Polyp, cervical/endometrial Polyp, colorectal Polyp, stomach/small intestine Prostate,
+    needle biopsy Prostate, TUR Salivary gland, biopsy Sinus, paranasal biopsy Skin,
+    other than cyst/tag/debridement/plastic repair Small intestine, biopsy Soft tissue,
+    other than tumor/mass/lipoma/debridement Spleen Stomach, biopsy Synovium Testis,
+    other than tumor/biopsy/castration Thyroglossal duct/brachial cleft cyst Tongue,
+    biopsy Tonsil, biopsy Trachea, biopsy Ureter, biopsy Urethra, biopsy Urinary bladder,
+    biopsy Uterus, with or without tubes and ovaries, for prolapse Vagina, biopsy
+    Vulva/labia, biopsy'
+- id: 2
+  HICN: K765775483
+  MemberID: 1889
+  ClaimID: 87558871524
+  CPT: '88312'
+  CPT_Desc: 'Special stain including interpretation and report; Group I for microorganisms
+    (eg, acid fast, methenamine silver)'
+- id: 3
+  HICN: K765775483
+  MemberID: 1890
+  ClaimID: 87558871524
+  CPT: '88313'
+  CPT_Desc: 'Special stain including interpretation and report; Group II, all other
+    (eg, iron, trichrome), except stain for microorganisms, stains for enzyme constituents,
+    or immunocytochemistry and immunohistochemistry'
+- id: 4
+  HICN: K765775483
+  MemberID: 1891
+  ClaimID: 16810845715
+  CPT: '99214'
+  CPT_Desc: 'Office or other outpatient visit for the evaluation and management of
+    an established patient, which requires at least 2 of these 3 key components: A
+    detailed history; A detailed examination; Medical decision making of moderate
+    complexity. Counseling and/or coordination of care with other physicians, other
+    qualified health care professionals, or agencies are provided consistent with
+    the nature of the problem(s) and the patient''''s and/or family''''s needs. Usually,
+    the presenting problem(s) are of moderate to high severity. Typically, 25 minutes
+    are spent face-to-face with the patient and/or family.'
+- id: 5
+  HICN: K765775483
+  MemberID: 1887
+  ClaimID: 16810845715
+  CPT: '36415'
+  CPT_Desc: 'Collection of venous blood by venipuncture'
+- id: 6
+  HICN: 4M911335495
+  MemberID: 852
+  ClaimID: 27616591536
+  CPT: '36415'
+  CPT_Desc: 'Collection of venous blood by venipuncture'
+- id: 7
+  HICN: K543218695
+  MemberID: 4914
+  ClaimID: 56499591536
+  CPT: '99213'
+  CPT_Desc: 'Office or other outpatient visit for the evaluation and management of
+    an established patient, which requires at least 2 of these 3 key components: An
+    expanded problem focused history; An expanded problem focused examination; Medical
+    decision making of low complexity. Counseling and coordination of care with other
+    physicians, other qualified health care professionals, or agencies are provided
+    consistent with the nature of the problem(s) and the patient''''s and/or family''''s
+    needs. Usually, the presenting problem(s) are of low to moderate severity. Typically,
+    15 minutes are spent face-to-face with the patient and/or family.'
+- id: 8
+  HICN: K911397646
+  MemberID: 4728
+  ClaimID: 46671391536
+  CPT: '80061'
+  CPT_Desc: 'Lipid panel This panel must include the following: Cholesterol, serum,
+    total (82465) Lipoprotein, direct measurement, high density cholesterol (HDL cholesterol)
+    (83718) Triglycerides (84478)'
+- id: 9
+  HICN: K911397646
+  MemberID: 4728
+  ClaimID: 46671391536
+  CPT: '85025'
+  CPT_Desc: 'Blood count; complete (CBC), automated (Hgb, Hct, RBC, WBC and platelet
+    count) and automated differential WBC count'
+- id: 10
+  HICN: K616095925
+  MemberID: 256
+  ClaimID: 61023691536
+  CPT: '99213'
+  CPT_Desc: 'Office or other outpatient visit for the evaluation and management of
+    an established patient, which requires at least 2 of these 3 key components: An
+    expanded problem focused history; An expanded problem focused examination; Medical
+    decision making of low complexity. Counseling and coordination of care with other
+    physicians, other qualified health care professionals, or agencies are provided
+    consistent with the nature of the problem(s) and the patient''''s and/or family''''s
+    needs. Usually, the presenting problem(s) are of low to moderate severity. Typically,
+    15 minutes are spent face-to-face with the patient and/or family.'
