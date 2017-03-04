@@ -45,6 +45,8 @@ n_trials = [0, 1, 2, 3, 4, 5, 8, 15, 50, 500]
 # the value 0 with probability q = 1 − p
 # It can be used to represent a coin toss where 1 and 0 would represent
 # "head" and "tail" (or vice versa), respectively.
+
+# 0.5 => probability of heads occuring (the prior probability)
 data = stats.bernoulli.rvs(0.5, size=500)
 
 # ==============================================================================
@@ -75,3 +77,9 @@ plt.suptitle("Bayesian updating of posterior probabilities",
 
 plt.tight_layout()
 plt.show()
+
+# The posterior probabilities are represented by the curves, and our uncertainty
+# is proportional to the width of the curve. As the plot above shows, as we start
+# to observe data our posterior probabilities start to shift and move around.
+# Eventually, as we observe more and more data (coin-flips), our probabilities
+# will tighten closer and closer around the true value of p=0.5 (marked by a dashed line).
