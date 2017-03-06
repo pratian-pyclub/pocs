@@ -1,29 +1,25 @@
 import tensorflow as tf
 import numpy as np
 import pandas as pd
-# Used to predict onset of diabetes
 
+# Used to predict onset of diabetes
 x = pd.read_csv('x.csv')
 x_data = x.values.astype(np.float32)
 
 y = pd.read_csv('y.csv')
 y_data = y.values.astype(np.float32)
 
-# Some Constants I Guess
-
-input_size = 8
-h1_size = 400
-h2_size = 100
-output_size = 2
-
-# End of the Constants Hopefully
+INPUT_SIZE = 8
+H1_SIZE = 400
+H2_SIZE = 100
+OUTPUT_SIZE = 2
 
 xs = tf.placeholder(tf.float32)
 ys = tf.placeholder(tf.float32)
 
-hidden_layer_1 = { 'weight': tf.Variable(tf.random_normal([input_size,h1_size])), 'bias': tf.Variable(tf.random_normal([1,h1_size])) }
-hidden_layer_2 = { 'weight': tf.Variable(tf.random_normal([h1_size,h2_size])), 'bias': tf.Variable(tf.random_normal([1,h2_size])) }
-output_layer = { 'weight': tf.Variable(tf.random_normal([h2_size,output_size])), 'bias': tf.Variable(tf.random_normal([1,output_size])) }
+hidden_layer_1 = { 'weight': tf.Variable(tf.random_normal([INPUT_SIZE,H1_SIZE])), 'bias': tf.Variable(tf.random_normal([1,H1_SIZE])) }
+hidden_layer_2 = { 'weight': tf.Variable(tf.random_normal([H1_SIZE,H2_SIZE])), 'bias': tf.Variable(tf.random_normal([1,H2_SIZE])) }
+output_layer = { 'weight': tf.Variable(tf.random_normal([H2_SIZE,OUTPUT_SIZE])), 'bias': tf.Variable(tf.random_normal([1,OUTPUT_SIZE])) }
 
 def neural_networking(input):
    h1 = tf.matmul(input, hidden_layer_1['weight']) + hidden_layer_1['bias']
