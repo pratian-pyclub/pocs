@@ -10,5 +10,5 @@ FEATURES_CSV = os.path.join(PWDPATH , DATA_DIR , 'features_normalized.csv')
 OUTCOMES_CSV  = os.path.join(PWDPATH , DATA_DIR , 'outcome.csv')
 PICKLE_FILE = os.path.join(PWDPATH, DATA_DIR, 'min_max.pkl')
 SPLIT = 250
-EPOCHS = 10000
+EPOCHS = 50000
 LEN_DATA = 506

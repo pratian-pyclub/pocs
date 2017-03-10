@@ -57,7 +57,7 @@ class NeuralNet:
 		self.predict = self.neural_networking(self.xs)
 		delta = tf.square(self.predict - self.ys)
 		self.cost = tf.reduce_sum(delta)
-		optimizer = tf.train.AdamOptimizer(0.01)
+		optimizer = tf.train.AdamOptimizer(0.0001)
 		self.prediction = optimizer.minimize(self.cost)
 
 		#Creating Session
@@ -78,7 +78,7 @@ class NeuralNet:
 		counter = 0
 		num = LEN_DATA - SPLIT
 		for i in range(num):
-			if(abs(self.y_test_data[i] -  op[i]) < 1.0):
+			if(abs(self.y_test_data[i] -  op[i]) < 0.5):
 				counter +=  1
 		print 'Accuracy is :', (counter * 100) / (num)
 		
@@ -109,8 +109,8 @@ class NeuralNet:
 # You can run like this if needed
 x = NeuralNet()
 x.load_model()
-#x.accuracy()
-# x.train()
+x.accuracy()
+x.train()
 # x.save_model()
 x.accuracy()
 
