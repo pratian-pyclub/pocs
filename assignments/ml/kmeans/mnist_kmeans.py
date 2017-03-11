@@ -10,19 +10,9 @@ from sklearn.cluster import KMeans
 from scipy.stats import mode
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
-from sklearn.manifold import TSNE
 
 digits = load_digits()
 digits.data.shape
-
-# tsne = TSNE(n_components=2, init='random', random_state=0)
-# digits_proj = tsne.fit_transform(digits.data)
-#
-# kmeans = KMeans(n_clusters=10, random_state=0)
-# clusters = kmeans.fit_predict(digits_proj)
-
-# (10, 2)
-# 0.919309961046
 
 kmeans = KMeans(n_clusters=10, random_state=0)
 clusters = kmeans.fit_predict(digits.data)
