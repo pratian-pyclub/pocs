@@ -5,7 +5,7 @@ from tensorflow.examples.tutorials.mnist import input_data
 
 
 # Working of our algorithm is as follows:
-# Conv1_layer -> Conv2_layer -> Flatten_layer -> FullyConnected_layer -> FullyConnected_layer(With 10 Classes)
+# Conv1_layer -> Conv2_layer -> Flatten_layer -> FullyConnected_layer -> FullyConnected_layer (With 10 Classes)
 
 # Reading handwritten digits from MNIST dataset
 data = input_data.read_data_sets('data/MNIST/', one_hot = True)
@@ -24,6 +24,28 @@ def new_weights(shape):
 # Function for defining biases
 def new_bias(length):
 	return tf.Variable(tf.constant(0.5, shape=[length]))
+
+# The filter is applied to image patches of the same size as the filter and
+# >strided< according to the strides argument.
+# strides = [1, 1, 1, 1] applies the filter to a patch at every offset,
+# strides = [1, 2, 2, 1] applies the filter to every other image patch in each dimension
+
+# Max Pooling Layer
+# Takes a pool of data (small rectangular boxes) form the convolutional layer
+# And then subsamples them to produce a single output block
+# Basically used to chuck out values that are insignificant to output, and
+# retains only the ones that are necessary
+# K is 2 so that a nice square is strided over
+
+# 1 1 2 4               {max(1,1,5,6) => 6}
+# 5 6 7 8 ====> 6 8     {max(5,6,7,8) => 8}
+# 3 2 1 0 ====> 3 4     {max(3,2,1,0) => 3}
+# 1 2 3 4               {max(1,2,3,4) => 4}
+
+# Typical values are 2x2 or no max-pooling. Very large input images may warrant
+# 4x4 pooling in the lower-layers. Keep in mind however, that this will reduce
+# the dimension of the signal by a factor of 16, and may result in throwing away
+# too much information.
 
 # Function to create the convolution layer with/without max-pooling
 def new_conv_layer(input, num_input_channels, filter_size, num_filters, use_pooling=True):
@@ -47,7 +69,7 @@ def flatten_layer(layer):
 	layer_flat = tf.reshape(layer, [-1, num_features])
 	return layer_flat, num_features
 
-# Fully connected layer 
+# Fully connected layer
 def new_fc_layer(input, num_inputs, num_outputs, use_relu=True):
 	weights = new_weights(shape=[num_inputs, num_outputs])
 	biases = new_bias(length= num_outputs)
@@ -84,7 +106,7 @@ optimizer = tf.train.AdamOptimizer(learning_rate=1e-4).minimize(cost)
 correct_prediction = tf.equal(y_pred_cls, y_true_cls)
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 
-# TF Session initiation 
+# TF Session initiation
 session = tf.Session()
 session.run(tf.global_variables_initializer())
 
@@ -114,4 +136,3 @@ optimize(STEPS)
 # test_number = test_number.reshape([1,784])
 # print np.argmax(data.train._labels[2])
 # print session.run(y_pred_cls, {x: test_number})
-
