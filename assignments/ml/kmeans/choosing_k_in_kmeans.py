@@ -23,6 +23,8 @@ import numpy as np
 # boundary between two neighboring clusters and negative values indicate that
 # those samples might have been assigned to the wrong cluster.
 
+# More info: http://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_silhouette_analysis.html
+
 def plot(n_clusters, cluster_labels, X):
     # Create a subplot with 1 row and 2 columns
     fig, (ax1) = plt.subplots(1, 1)
