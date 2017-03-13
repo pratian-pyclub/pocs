@@ -1,0 +1,3 @@
+- https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/
+- https://github.com/nryoung/algorithms
+- http://interactivepython.org/courselib/static/pythonds/index.html

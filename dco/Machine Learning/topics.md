@@ -1,0 +1,51 @@
+### Machine Learning
+
+1. Introduction
+  - Definition
+  - History
+  - Limitations and Considerations
+  - Key Elements of Machine Learning
+    - Representation
+    - Evaluation
+    - Optimization
+  - Understanding the importance and impact of
+    - Algorithm (Low)
+    - Feature Selection (Medium)
+    - Real World Data (High)
+  - Categories of Machine Learning
+    - Supervised
+    - Unsupervised
+    - Semi-Supervised
+    - Reinforcement
+  - Machine Learning Techniques
+    - Classification
+    - Regression
+      - Linear Regression
+      - Logistic Regression
+    - Clustering
+      - K-Means Clustering
+      - Dimensionality Reduction
+    - Classification Vs. Regression
+2. Representing and Manipulating Data with Numpy and Pandas
+  - Gathering Data
+    - Quantifying real world data
+    - Representing Data
+    - What is,
+      - Training Data
+      - Testing Data
+      - Validation Data
+    - Splitting a Dataset
+    - Normalizing Data
+      - Max Scaling
+      - Min Max Scaling
+  - Overfitting and regularization
+  - Introduction to Numpy
+    - Understanding datatypes in Python and Numpy
+    - The Basics of NumPy Arrays
+    - Computation on NumPy Arrays: Universal Functions
+    - Aggregations: Min, Max, and Everything In Between
+    - Computation on Arrays: Broadcasting
+    - Comparisons, Masks, and Boolean Logic
+    - Fancy Indexing
+    - Sorting Arrays
+    - Structured Data: NumPy's Structured Arrays

@@ -1,0 +1,89 @@
+### Deep Learning
+
+1. Introduction
+  - Definition
+  - History
+  - Limitations and Considerations
+  - Neural Networks
+  - Artificial Neurons
+    - Perceptron
+    - Sigmoid
+  - Architecture of Neural Networks
+    - Input Layer
+    - Hidden Layer
+    - Output Layer
+  - Understanding the importance and impact of
+    - Algorithm (Low)
+    - Feature Selection (Medium)
+    - Real World Data (High)
+  - Overfitting and regularization
+  - LAB: Introduction to Tensorflow (Part 1)
+2. Datasets, Networks, and Trainers
+  - Gathering Data
+    - Quantifying real world data
+    - Representing Data
+    - What is,
+      - Training Data
+      - Testing Data
+      - Validation Data
+    - Splitting a Dataset
+    - Normalizing Data
+  - Networks
+    - Role and Importance
+    - Layers
+    - Bias
+    - Look at Feed Forward Networks
+    - Look at Recurrent Networks
+  - Deeper Look at Layers
+    - Sigmoid Layer
+    - TanH Layer
+    - Softmax Layer
+    - Relu Layer
+  - Trainers
+    - Role and Importance
+    - Cost/Loss Functions and - Gaussian Distributions
+    - Gradient Descent Algorithm
+    - Back Propagation Trainer
+      - http://neuralnetworksanddeeplearning.com/chap2.html
+      - Back Propagation with a single modified neuron
+      - Back Propagation with linear neurons
+  - LAB: Introduction to Tensorflow (Part 2)
+4. Machine Learning with Tensorflow
+  - Sessions, Variables and Constants
+  - Reading from Files
+    - Filenames, shuffling and epoch limits
+    - File formats
+    - Preprocessing
+    - Batching
+  - Threads and Queues
+    - Queue Usage
+    - Coordinator
+    - Queue Runner
+  - LAB: Linear Regression
+  - LAB: Cost Functions and Hand Made Descents
+  - LAB: Logistic Regression
+  - LAB: Softmax Classification
+  - ASSIGNMENT: Predicting Onset of Diabetes using TF NN
+  - CASE STUDY: Image Classification with Convolution networks using TF NN
+3. Machine Learning with PyBrain
+  - Introduction and Installation
+  - Model Overview
+  - Building A Network
+    - Building
+    - Activating
+    - Examining
+    - Creating a Feed Forward Network
+    - Creating a Recurrent Network
+  - Building A Dataset
+    - Adding
+    - Examining
+    - Differences between
+      - Regression or Supervised Dataset
+      - Classification
+      - Sequential Dataset
+  - Training using Back Propagation Trainer
+  - Layers and Connectors
+  - Saving and Loading Classifiers using Pickle
+  - LAB: Classification of Multivariate Gaussion Distribution using FeedForward Network
+  - ASSESSMENT: Predicting House Prices using TF NN
+  - PROJECT: Automatic Image Classification with Neural Networks and PyBrain

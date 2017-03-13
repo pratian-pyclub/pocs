@@ -1,0 +1,3 @@
+- http://machinelearningmastery.com/basic-concepts-in-machine-learning/
+- http://neuralnetworksanddeeplearning.com/
+- http://pybrain.org/docs/

@@ -1,0 +1,3 @@
+- Natural Language Processing - https://en.wikipedia.org/wiki/Natural_language_processing
+- NLTK Book - http://www.nltk.org/book_1ed
+- Data Carpentry with NLTK and IPython https://github.com/resbaz/nltk
