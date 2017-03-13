@@ -11,6 +11,8 @@ from scipy.stats import mode
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
 
+from choosing_k_in_kmeans import plot
+
 digits = load_digits()
 digits.data.shape
 
@@ -21,6 +23,8 @@ clusters = kmeans.fit_predict(digits.data)
 # 0.793544796884
 
 print kmeans.cluster_centers_.shape
+
+plot(10, clusters, digits.data)
 
 fig, ax = plt.subplots(2, 5, figsize=(8, 3))
 centers = kmeans.cluster_centers_.reshape(10, 8, 8)
