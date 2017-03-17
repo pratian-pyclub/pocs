@@ -4,3 +4,5 @@ https://github.com/ananthpn/pyhmm/blob/master/myhmm.py
 https://github.com/codebox/markov-text
 
 https://github.com/chaithuzz2/Parts-Of-Speech-tagging/blob/master/tagger.py
+
+https://www.youtube.com/watch?v=TPRoLreU9lA&t=283s
