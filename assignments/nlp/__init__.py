@@ -35,7 +35,7 @@ class Extractor:
 		company.extend([word for (word, pos) in result if pos == 'COMPANY'])
 		return company
 
-text = "AI Developer at Skcript. Blah blah blah here there"
+text = "AI Developer at Skcript."
 
 ex = Extractor(text)
 print ex.extract_full_info() # ['developer at skcript']
